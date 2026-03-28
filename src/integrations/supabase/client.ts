@@ -3,6 +3,6 @@ import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = "https://psnhoodkcdynimnenpea.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJIUzI1NiIsInJlZiI6InBzbmhvb2RrY2R5bmltbmVucGVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MTUyMjAsImV4cCI6MjA5MDI5MTIyMH0.LZpcmvOKtUJ-fcOWrNir79aG8wqR4wrBKUUxcQBZ4K8";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmhvb2RrY2R5bmltbmVucGVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MTUyMjAsImV4cCI6MjA5MDI5MTIyMH0.LZpcmvOKtUJ-fcOWrNir79aG8wqR4wrBKUUxcQBZ4K8";
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
