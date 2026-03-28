@@ -1,11 +1,11 @@
 import { Link, Navigate } from "react-router-dom";
 import {
   ArrowRight,
-  BriefcaseMedical,
+  Building2,
   CalendarCheck2,
   ClipboardCheck,
+  LayoutDashboard,
   ShieldCheck,
-  UserCog,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,23 +14,23 @@ import { useAuth } from "@/providers/AuthProvider";
 const highlights = [
   {
     icon: ShieldCheck,
-    title: "Controle por nível",
-    description: "Admin, RH, chefes e gerentes enxergam somente o que o RLS permite.",
+    title: "Multi-tenant por município",
+    description: "Cada prefeitura opera em ambiente isolado com dados protegidos por município no Supabase.",
   },
   {
     icon: CalendarCheck2,
-    title: "Escalas e extras",
-    description: "Extras geram +2 folgas automaticamente direto no backend do Supabase.",
+    title: "Escalas, extras e folgas",
+    description: "Escalas extras geram créditos automaticamente e pedidos aprovados consomem saldo.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Navegação lateral operacional",
+    description: "Painel com barra lateral esquerda em estilo PEC/e-SUS para uso diário da equipe.",
   },
   {
     icon: ClipboardCheck,
-    title: "Folgas auditáveis",
-    description: "Pedidos pendentes, aprovação por chefe e saldo calculado pela movimentação.",
-  },
-  {
-    icon: UserCog,
-    title: "Convites e vínculos",
-    description: "Cadastro apenas por convite, com categoria ou unidade definida no acesso.",
+    title: "Convites e perfis",
+    description: "Admin do município cria convites para RH, chefes e gerentes sem depender de login especial.",
   },
 ];
 
@@ -48,27 +48,27 @@ export default function Index() {
           <CardContent className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                <BriefcaseMedical className="h-4 w-4" />
-                Sistema web de gestão operacional
+                <Building2 className="h-4 w-4" />
+                Plataforma SaaS para municípios
               </div>
               <div className="space-y-4">
                 <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                  Gestão de escalas, extras e folgas com backend funcional em Supabase
+                  Gestão de escalas com padrão SaaS e operação no estilo PEC/e-SUS
                 </h1>
                 <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                  Plataforma simples para operar equipes por unidade e categoria, com autenticação,
-                  convites, aprovação de folgas e histórico de transferências.
+                  Cada município cria seu próprio ambiente, cadastra o admin local e convida RH,
+                  chefes e gerentes para operar escalas, extras, folgas e transferências.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild className="h-11 rounded-full px-6">
-                  <Link to="/login">
-                    Entrar
+                  <Link to="/cadastro">
+                    Criar município
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild className="h-11 rounded-full px-6" variant="secondary">
-                  <Link to="/cadastro">Cadastrar com convite</Link>
+                  <Link to="/login">Entrar</Link>
                 </Button>
               </div>
             </div>
@@ -90,16 +90,16 @@ export default function Index() {
         <div className="grid gap-6 lg:grid-cols-3">
           {[
             {
-              title: "Admin",
-              body: "Cria unidades, categorias, convites e transfere funcionários ou gerentes.",
+              title: "Admin do município",
+              body: "Entra pelo mesmo cadastro padrão SaaS, cria unidades, categorias, convites e ajusta vínculos locais.",
             },
             {
-              title: "Chefe + Gerente",
-              body: "Chefe monta escalas e aprova folgas; gerente cadastra funcionários e solicita folgas.",
+              title: "Operação assistencial",
+              body: "Chefe monta escalas e aprova folgas; gerente cadastra funcionários e solicita folgas da equipe.",
             },
             {
-              title: "RH",
-              body: "Acesso total de leitura para acompanhar equipes, pedidos, escalas e histórico.",
+              title: "Leitura institucional",
+              body: "RH acompanha dados do município inteiro em modo de leitura, sem alterar processos operacionais.",
             },
           ].map((card) => (
             <Card key={card.title} className="rounded-[1.75rem] border-border/70 bg-card shadow-[0_18px_60px_rgba(95,76,164,0.06)]">

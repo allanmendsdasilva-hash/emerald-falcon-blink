@@ -51,22 +51,22 @@ export default function Login() {
         <div className="space-y-6 rounded-[2rem] border border-border/70 bg-card p-8 shadow-[0_28px_90px_rgba(95,76,164,0.08)] sm:p-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             <ShieldCheck className="h-4 w-4" />
-            Acesso seguro
+            Acesso por município
           </div>
           <div className="space-y-3">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Entre no sistema de escalas
+              Entre no sistema do seu município
             </h1>
             <p className="max-w-xl text-base leading-7 text-muted-foreground">
-              Login via Supabase Auth com níveis de acesso para admin, RH, chefe de categoria e
-              gerente de unidade.
+              O mesmo login atende admins locais, RH, chefes de categoria e gerentes de unidade no
+              modelo SaaS.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
             {[
-              "Escalas e extras",
-              "Folgas com saldo automático",
+              "Ambiente isolado",
               "Permissões por nível",
+              "Fluxo operacional contínuo",
             ].map((item) => (
               <div
                 key={item}
@@ -83,7 +83,7 @@ export default function Login() {
             <div>
               <h2 className="text-2xl font-semibold text-foreground">Login</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Use seu e-mail e senha para acessar o painel.
+                Use seu e-mail e senha para acessar o painel do município.
               </p>
             </div>
 
@@ -93,7 +93,7 @@ export default function Login() {
                 <Input
                   className="h-11 rounded-2xl border-border/70"
                   type="email"
-                  placeholder="voce@empresa.com"
+                  placeholder="voce@municipio.gov.br"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 />
@@ -115,9 +115,9 @@ export default function Login() {
             </div>
 
             <p className="text-sm text-muted-foreground">
-              Recebeu um convite?{" "}
+              Primeiro acesso?{" "}
               <Link className="font-semibold text-primary" to="/cadastro">
-                Crie sua conta aqui
+                Crie o ambiente do município ou use um convite
               </Link>
               .
             </p>

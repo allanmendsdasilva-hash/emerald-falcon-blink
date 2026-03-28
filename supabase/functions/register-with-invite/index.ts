@@ -42,7 +42,7 @@ serve(async (req) => {
 
     const { data: invite, error: inviteError } = await supabase
       .from("convites")
-      .select("id, nivel, categoria_id, unidade_id, usado")
+      .select("id, nivel, municipio_id, categoria_id, unidade_id, usado")
       .eq("token", normalizedToken)
       .eq("usado", false)
       .maybeSingle();
@@ -105,6 +105,7 @@ serve(async (req) => {
       nome: normalizedName,
       email: normalizedEmail,
       nivel: invite.nivel,
+      municipio_id: invite.municipio_id,
       categoria_id: invite.categoria_id,
       unidade_id: invite.unidade_id,
     });
@@ -136,6 +137,7 @@ serve(async (req) => {
     console.log("[register-with-invite] user created successfully", {
       userId,
       nivel: invite.nivel,
+      municipioId: invite.municipio_id,
     });
 
     return Response.json(
@@ -143,6 +145,7 @@ serve(async (req) => {
         success: true,
         userId,
         nivel: invite.nivel,
+        municipioId: invite.municipio_id,
       },
       { status: 200, headers: corsHeaders },
     );

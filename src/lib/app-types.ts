@@ -1,14 +1,23 @@
 export type Role = "admin" | "rh" | "chefe" | "gerente";
 
+export interface Municipio {
+  id: string;
+  nome: string;
+  slug: string;
+  created_at: string;
+}
+
 export interface Unidade {
   id: string;
   nome: string;
+  municipio_id: string;
   created_at: string;
 }
 
 export interface Categoria {
   id: string;
   nome: string;
+  municipio_id: string;
   created_at: string;
 }
 
@@ -17,6 +26,7 @@ export interface Usuario {
   nome: string;
   email: string;
   nivel: Role;
+  municipio_id: string;
   categoria_id: string | null;
   unidade_id: string | null;
   created_at: string;
@@ -26,6 +36,7 @@ export interface Convite {
   id: string;
   token: string;
   nivel: Role;
+  municipio_id: string;
   categoria_id: string | null;
   unidade_id: string | null;
   usado: boolean;
@@ -36,6 +47,7 @@ export interface Convite {
 export interface Funcionario {
   id: string;
   nome: string;
+  municipio_id: string;
   categoria_id: string;
   unidade_id: string;
   created_at: string;
@@ -44,6 +56,7 @@ export interface Funcionario {
 export interface Escala {
   id: string;
   funcionario_id: string;
+  municipio_id: string;
   data: string;
   tipo: "normal" | "extra";
   unidade_id: string;
@@ -54,6 +67,7 @@ export interface Escala {
 export interface FolgaLancamento {
   id: string;
   funcionario_id: string;
+  municipio_id: string;
   quantidade: number;
   origem: string;
   referencia_id: string | null;
@@ -63,6 +77,7 @@ export interface FolgaLancamento {
 export interface PedidoFolga {
   id: string;
   funcionario_id: string;
+  municipio_id: string;
   solicitado_por: string;
   status: "pendente" | "aprovado" | "negado";
   analisado_por: string | null;
@@ -73,6 +88,7 @@ export interface PedidoFolga {
 export interface HistoricoTransferencia {
   id: string;
   funcionario_id: string;
+  municipio_id: string;
   unidade_origem: string;
   unidade_destino: string;
   data_transferencia: string;
