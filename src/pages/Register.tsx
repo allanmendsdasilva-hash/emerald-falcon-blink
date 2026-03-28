@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { FunctionsHttpError } from "@supabase/supabase-js";
 import { Building2, KeyRound, UserPlus } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -94,6 +95,17 @@ export default function Register() {
       toast.success(isInviteMode ? "Conta criada com sucesso." : "Município criado com sucesso.");
       navigate("/app", { replace: true });
     } catch (error) {
+      if (error instanceof FunctionsHttpError) {
+        try {
+          const response = await error.context.json();
+          toast.error(response?.message ?? "Não foi possível concluir o cadastro.");
+          return;
+        } catch {
+          toast.error("Não foi possível concluir o cadastro.");
+          return;
+        }
+      }
+
       const message = error instanceof Error ? error.message : "Erro ao criar a conta.";
       toast.error(message);
     } finally {
